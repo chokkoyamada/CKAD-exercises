@@ -139,7 +139,7 @@ As an alternative to using `| grep` you can use jsonPath like `-o jsonpath='{.me
 </p>
 </details>
 
-### Remove the annotations fot these three pods
+### Remove the annotations for these three pods
 
 <details><summary>show</summary>
 <p>
@@ -439,6 +439,8 @@ kubectl delete hpa nginx
 
 ```bash
 kubectl run pi --image=perl --restart=OnFailure -- perl -Mbignum=bpi -wle 'print bpi(2000)'
+# or with create
+kubectl create job pi --image=perl  -- perl -Mbignum=bpi -wle 'print bpi(2000)'
 ```
 
 </p>
@@ -466,6 +468,8 @@ kubectl delete job pi
 
 ```bash
 kubectl run busybox --image=busybox --restart=OnFailure -- /bin/sh -c 'echo hello;sleep 30;echo world'
+# or with create
+kubectl create job busybox --image=busybox -- /bin/sh -c 'echo hello;sleep 30;echo world'
 ```
 
 </p>
@@ -517,6 +521,8 @@ kubectl delete job busybox
 
 ```bash
 kubectl run busybox --image=busybox --restart=OnFailure --dry-run -o yaml -- /bin/sh -c 'echo hello;sleep 30;echo world' > job.yaml
+# or with create
+kubectl create job busybox --image=busybox --dry-run -o yaml -- /bin/sh -c 'echo hello;sleep 30;echo world' > job.yaml
 vi job.yaml
 ```
 
